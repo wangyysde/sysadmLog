@@ -1,4 +1,4 @@
-package logrus
+package sysadmLog
 
 import (
 	"bytes"
@@ -35,7 +35,7 @@ func putBuffer(buf *bytes.Buffer) {
 	bufferPool.Put(buf)
 }
 
-// SetBufferPool allows to replace the default logrus buffer pool
+// SetBufferPool allows to replace the default sysadmLog buffer pool
 // to better meets the specific needs of an application.
 func SetBufferPool(bp BufferPool) {
 	bufferPool = bp

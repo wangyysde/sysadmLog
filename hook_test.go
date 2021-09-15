@@ -1,4 +1,4 @@
-package logrus_test
+package sysadmLog_test
 
 import (
 	"bytes"
@@ -10,9 +10,9 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	. "github.com/sirupsen/logrus"
-	"github.com/sirupsen/logrus/hooks/test"
-	. "github.com/sirupsen/logrus/internal/testutils"
+	. "github.com/wangyysde/sysadmLog"
+	"github.com/wangyysde/sysadmLog/hooks/test"
+	. "github.com/wangyysde/sysadmLog/internal/testutils"
 )
 
 type TestHook struct {

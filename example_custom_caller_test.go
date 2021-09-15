@@ -1,4 +1,4 @@
-package logrus_test
+package sysadmLog_test
 
 import (
 	"os"
@@ -6,14 +6,14 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/sirupsen/logrus"
+	"github.com/wangyysde/sysadmLog"
 )
 
 func ExampleJSONFormatter_CallerPrettyfier() {
-	l := logrus.New()
+	l := sysadmLog.New()
 	l.SetReportCaller(true)
 	l.Out = os.Stdout
-	l.Formatter = &logrus.JSONFormatter{
+	l.Formatter = &sysadmLog.JSONFormatter{
 		DisableTimestamp: true,
 		CallerPrettyfier: func(f *runtime.Frame) (string, string) {
 			s := strings.Split(f.Function, ".")

@@ -1,9 +1,9 @@
-package logrus_test
+package sysadmLog_test
 
 import (
 	"testing"
 
-	log "github.com/sirupsen/logrus"
+	log "github.com/wangyysde/sysadmLog"
 	"github.com/stretchr/testify/assert"
 )
 

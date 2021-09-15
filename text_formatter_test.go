@@ -1,4 +1,4 @@
-package logrus
+package sysadmlog
 
 import (
 	"bytes"
