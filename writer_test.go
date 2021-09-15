@@ -1,20 +1,20 @@
-package logrus_test
+package sysadmlog_test
 
 import (
 	"log"
 	"net/http"
 
-	"github.com/sirupsen/logrus"
+	"github.com/wangyysde/sysadmLog"
 )
 
 func ExampleLogger_Writer_httpServer() {
-	logger := logrus.New()
+	logger := sysadmLog.New()
 	w := logger.Writer()
 	defer w.Close()
 
 	srv := http.Server{
 		// create a stdlib log.Logger that writes to
-		// logrus.Logger.
+		// sysadmLog.Logger.
 		ErrorLog: log.New(w, "", 0),
 	}
 
@@ -24,11 +24,11 @@ func ExampleLogger_Writer_httpServer() {
 }
 
 func ExampleLogger_Writer_stdlib() {
-	logger := logrus.New()
-	logger.Formatter = &logrus.JSONFormatter{}
+	logger := sysadmLog.New()
+	logger.Formatter = &sysadmLog.JSONFormatter{}
 
-	// Use logrus for standard log output
+	// Use sysadmLog for standard log output
 	// Note that `log` here references stdlib's log
-	// Not logrus imported under the name `log`.
+	// Not sysadmLog imported under the name `log`.
 	log.SetOutput(logger.Writer())
 }

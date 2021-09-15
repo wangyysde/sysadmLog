@@ -1,4 +1,4 @@
-package logrus
+package sysadmLog
 
 import (
 	"golang.org/x/sys/unix"

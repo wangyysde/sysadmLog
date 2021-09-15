@@ -1,21 +1,21 @@
-package logrus_test
+package sysadmLog_test
 
 import (
 	"bytes"
 	"encoding/json"
 	"testing"
 
-	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/require"
+	"github.com/wangyysde/sysadmLog"
 )
 
 func TestLevelJsonEncoding(t *testing.T) {
 	type X struct {
-		Level logrus.Level
+		Level sysadmLog.Level
 	}
 
 	var x X
-	x.Level = logrus.WarnLevel
+	x.Level = sysadmLog.WarnLevel
 	var buf bytes.Buffer
 	enc := json.NewEncoder(&buf)
 	require.NoError(t, enc.Encode(x))
@@ -25,8 +25,8 @@ func TestLevelJsonEncoding(t *testing.T) {
 }
 
 func TestLevelUnmarshalText(t *testing.T) {
-	var u logrus.Level
-	for _, level := range logrus.AllLevels {
+	var u sysadmLog.Level
+	for _, level := range sysadmLog.AllLevels {
 		t.Run(level.String(), func(t *testing.T) {
 			require.NoError(t, u.UnmarshalText([]byte(level.String())))
 			require.Equal(t, level, u)
@@ -47,10 +47,10 @@ func TestLevelMarshalText(t *testing.T) {
 		"debug",
 		"trace",
 	}
-	for idx, val := range logrus.AllLevels {
+	for idx, val := range sysadmLog.AllLevels {
 		level := val
 		t.Run(level.String(), func(t *testing.T) {
-			var cmp logrus.Level
+			var cmp sysadmLog.Level
 			b, err := level.MarshalText()
 			require.NoError(t, err)
 			require.Equal(t, levelStrings[idx], string(b))

@@ -1,4 +1,4 @@
-package logrus
+package sysadmLog
 
 import (
 	"bytes"
@@ -24,8 +24,8 @@ func TestFieldValueError(t *testing.T) {
 	if err := json.Unmarshal(buf.Bytes(), &data); err != nil {
 		t.Error("unexpected error", err)
 	}
-	_, ok := data[FieldKeyLogrusError]
-	require.True(t, ok, `cannot found expected "logrus_error" field: %v`, data)
+	_, ok := data[FieldKeysysadmLogError]
+	require.True(t, ok, `cannot found expected "sysadmLog_error" field: %v`, data)
 }
 
 func TestNoFieldValueError(t *testing.T) {
@@ -42,7 +42,7 @@ func TestNoFieldValueError(t *testing.T) {
 	if err := json.Unmarshal(buf.Bytes(), &data); err != nil {
 		t.Error("unexpected error", err)
 	}
-	_, ok := data[FieldKeyLogrusError]
+	_, ok := data[FieldKeysysadmLogError]
 	require.False(t, ok)
 }
 

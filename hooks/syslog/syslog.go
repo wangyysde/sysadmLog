@@ -7,7 +7,7 @@ import (
 	"log/syslog"
 	"os"
 
-	"github.com/sirupsen/logrus"
+	"github.com/wangyysde/sysadmLog"
 )
 
 // SyslogHook to send logs via syslog.
@@ -25,7 +25,7 @@ func NewSyslogHook(network, raddr string, priority syslog.Priority, tag string) 
 	return &SyslogHook{w, network, raddr}, err
 }
 
-func (hook *SyslogHook) Fire(entry *logrus.Entry) error {
+func (hook *SyslogHook) Fire(entry *sysadmLog.Entry) error {
 	line, err := entry.String()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Unable to read entry, %v", err)
@@ -33,23 +33,23 @@ func (hook *SyslogHook) Fire(entry *logrus.Entry) error {
 	}
 
 	switch entry.Level {
-	case logrus.PanicLevel:
+	case sysadmLog.PanicLevel:
 		return hook.Writer.Crit(line)
-	case logrus.FatalLevel:
+	case sysadmLog.FatalLevel:
 		return hook.Writer.Crit(line)
-	case logrus.ErrorLevel:
+	case sysadmLog.ErrorLevel:
 		return hook.Writer.Err(line)
-	case logrus.WarnLevel:
+	case sysadmLog.WarnLevel:
 		return hook.Writer.Warning(line)
-	case logrus.InfoLevel:
+	case sysadmLog.InfoLevel:
 		return hook.Writer.Info(line)
-	case logrus.DebugLevel, logrus.TraceLevel:
+	case sysadmLog.DebugLevel, sysadmLog.TraceLevel:
 		return hook.Writer.Debug(line)
 	default:
 		return nil
 	}
 }
 
-func (hook *SyslogHook) Levels() []logrus.Level {
-	return logrus.AllLevels
+func (hook *SyslogHook) Levels() []sysadmLog.Level {
+	return sysadmLog.AllLevels
 }

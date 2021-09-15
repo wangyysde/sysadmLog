@@ -6,11 +6,11 @@ import (
 	"log/syslog"
 	"testing"
 
-	"github.com/sirupsen/logrus"
+	"github.com/wangyysde/sysadmLog"
 )
 
 func TestLocalhostAddAndPrint(t *testing.T) {
-	log := logrus.New()
+	log := sysadmLog.New()
 	hook, err := NewSyslogHook("udp", "localhost:514", syslog.LOG_INFO, "")
 
 	if err != nil {
