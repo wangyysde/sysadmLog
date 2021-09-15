@@ -152,7 +152,7 @@ func (f *TextFormatter) Format(entry *Entry) ([]byte, error) {
 		fixedKeys = append(fixedKeys, f.FieldMap.resolve(FieldKeyMsg))
 	}
 	if entry.err != "" {
-		fixedKeys = append(fixedKeys, f.FieldMap.resolve(FieldKeySysadmLogError))
+		fixedKeys = append(fixedKeys, f.FieldMap.resolve(FieldKeysysadmLogError))
 	}
 	if entry.HasCaller() {
 		if f.CallerPrettyfier != nil {
@@ -212,7 +212,7 @@ func (f *TextFormatter) Format(entry *Entry) ([]byte, error) {
 				value = entry.Level.String()
 			case key == f.FieldMap.resolve(FieldKeyMsg):
 				value = entry.Message
-			case key == f.FieldMap.resolve(FieldKeySysadmLogError):
+			case key == f.FieldMap.resolve(FieldKeysysadmLogError):
 				value = entry.err
 			case key == f.FieldMap.resolve(FieldKeyFunc) && entry.HasCaller():
 				value = funcVal

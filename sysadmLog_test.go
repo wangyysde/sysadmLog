@@ -655,7 +655,7 @@ func TestReplaceHooks(t *testing.T) {
 }
 
 // Compile test
-func TestsysadmLogInterfaces(t *testing.T) {
+func TestSysadmLogInterfaces(t *testing.T) {
 	var buffer bytes.Buffer
 	// This verifies FieldLogger and Ext1FieldLogger work as designed.
 	// Please don't use them. Use Logger and Entry directly.

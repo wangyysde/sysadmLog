@@ -1,4 +1,4 @@
-package sysadmlog_test
+package sysadmLog_test
 
 import (
 	"log"
